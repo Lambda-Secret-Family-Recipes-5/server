@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const Auth = require('./restricted-middleware')
 
 const db = require('../users/users-model.js')
 const secrets = require('../../config/secrets.js')
@@ -35,7 +36,7 @@ router.post('/login', (req, res) => {
       .first()
       .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
-            const token = generateToken(user)
+            const token = Auth.generateToken(user)
 
             res.status(200).json({
                 username: user.username,

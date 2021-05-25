@@ -14,7 +14,7 @@ router.post('register', (req, res) => {
 
     db.add(user)
         .then(user => {
-            const token = Auth.generateToken(user)
+            const token = generateToken(user)
 
             res.status(201).json({
                 username: user.username,
@@ -36,7 +36,7 @@ router.post('/login', (req, res) => {
       .first()
       .then(user => {
         if (user && bcrypt.compareSync(password, user.password)) {
-            const token = Auth.generateToken(user)
+            const token = generateToken(user)
 
             res.status(200).json({
                 username: user.username,

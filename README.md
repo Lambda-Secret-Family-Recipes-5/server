@@ -24,8 +24,8 @@ Expects an object with this format as the request body:
 Expects an object with this format as the request body:
 ```
 {
-  "username": "User1",   //string
-  "password": "password" //string
+  "username": "admin",   //string
+  "password": "admin" //string
   "email": email@email.com //string
 }
 ```

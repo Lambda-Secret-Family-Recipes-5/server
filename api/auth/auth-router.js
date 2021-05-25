@@ -14,7 +14,7 @@ router.post('register', (req, res) => {
 
     db.add(user)
         .then(user => {
-            const token = generateToken(user)
+            const token = Auth.generateToken(user)
 
             res.status(201).json({
                 username: user.username,
